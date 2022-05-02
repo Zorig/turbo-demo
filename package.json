@@ -1,0 +1,26 @@
+{
+  "name": "workspace",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "eslint": "^8.14.0",
+    "husky": "^7.0.4",
+    "turbo": "^1.2.6"
+  },
+  "scripts": {
+    "format": "prettier --ignore-unknown",
+    "prepare": "husky install",
+    "test": "jest",
+    "lint": "eslint"
+  },
+  "lint-staged": {
+    "*": [
+      "yarn format --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "yarn lint --fix",
+      "yarn test --bail --findRelatedTests"
+    ]
+  }
+}
